@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
+  <!--This is to link to the desktop app icon (-Marshal)-->
+  <link rel="manifest" href="/manifest.json">
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title>Inhale</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -16,15 +19,45 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
-
+  <!-- This is to register service worker to make the app part (-Marshal) -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
-          console.log('Service Worker registered with scope:', registration.scope);
-        });
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('ServiceWorker registration successful:', registration);
+          })
+          .catch((error) => {
+            console.error('ServiceWorker registration failed:', error);
+          });
       });
     }
+  </script>
+  <!-- this is for pop up (-Marshal)-->
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      // Optionally show a custom install button or prompt here
+    });
+
+    // Trigger installation (after user action)
+    document.querySelector('#your-install-button').addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt');
+          } else {
+            console.log('User dismissed the A2HS prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+
   </script>
 
 </head>
@@ -1725,7 +1758,10 @@
   <footer class="main-footer">
     <strong>Copyright &copy; 2024 Exhale.</strong>
     All rights reserved.
-    <!-- <div class="float-right d-none d-sm-inline-block">
+    <<<<<<< HEAD <!-- <div class="float-right d-none d-sm-inline-block">
+      =======
+      <!-- <div class="float-right d-none d-sm-inline-block">
+>>>>>>> 9ad16d2ff3eebca68132a19762a7ad08136f76f6
       <b>Version</b> 3.2.0
     </div> -->
   </footer>
