@@ -504,7 +504,7 @@
   var $navbar_variants = $('<div />', {
     class: 'd-flex'
   })
-  var navbar_all_colors = navbar_dark_skins.concat(navbar_light_skins)
+  // var navbar_all_colors = navbar_dark_skins.concat(navbar_light_skins)
   var $navbar_variants_colors = createSkinBlock(navbar_all_colors, function () {
     var color = $(this).find('option:selected').attr('class')
     var $main_header = $('.main-header')

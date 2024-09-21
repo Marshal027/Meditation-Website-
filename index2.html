@@ -15,6 +15,18 @@
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        });
+      });
+    }
+  </script>
+
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -1711,11 +1723,11 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2024 Exhale.</strong>
     All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
+    <!-- <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
-    </div>
+    </div> -->
   </footer>
   </div>
   <!-- ./wrapper -->
