@@ -5,11 +5,12 @@
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.adminlte = {}, global.jQuery));
-})(this, (function (exports, $) { 'use strict';
+    typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.adminlte = {}, global.jQuery));
+})(this, (function (exports, $) {
+  'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy(e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
   var $__default = /*#__PURE__*/_interopDefaultLegacy($);
 
@@ -46,11 +47,11 @@
     responseType: '',
     overlayTemplate: '<div class="overlay"><i class="fas fa-2x fa-sync-alt fa-spin"></i></div>',
     errorTemplate: '<span class="text-danger"></span>',
-    onLoadStart: function onLoadStart() {},
+    onLoadStart: function onLoadStart() { },
     onLoadDone: function onLoadDone(response) {
       return response;
     },
-    onLoadFail: function onLoadFail(_jqXHR, _textStatus, _errorThrown) {}
+    onLoadFail: function onLoadFail(_jqXHR, _textStatus, _errorThrown) { }
   };
 
   var CardRefresh = /*#__PURE__*/function () {
@@ -115,7 +116,7 @@
 
       $__default["default"](this._element).trigger($__default["default"].Event(EVENT_OVERLAY_REMOVED));
     } // Private
-    ;
+      ;
 
     _proto._init = function _init() {
       var _this2 = this;
@@ -128,7 +129,7 @@
         this.load();
       }
     } // Static
-    ;
+      ;
 
     CardRefresh._jQueryInterface = function _jQueryInterface(config) {
       var data = $__default["default"](this).data(DATA_KEY$e);
@@ -329,7 +330,7 @@
 
       this.maximize();
     } // Private
-    ;
+      ;
 
     _proto._init = function _init(card) {
       var _this3 = this;
@@ -345,7 +346,7 @@
         _this3.remove();
       });
     } // Static
-    ;
+      ;
 
     CardWidget._jQueryInterface = function _jQueryInterface(config) {
       var data = $__default["default"](this).data(DATA_KEY$d);
@@ -535,7 +536,7 @@
         this.collapse();
       }
     } // Private
-    ;
+      ;
 
     _proto._init = function _init() {
       var _this2 = this;
@@ -671,7 +672,7 @@
         });
       }
     } // Static
-    ;
+      ;
 
     ControlSidebar._jQueryInterface = function _jQueryInterface(operation) {
       return this.each(function () {
@@ -757,7 +758,7 @@
       $__default["default"](this._element).parents(SELECTOR_DIRECT_CHAT).first().toggleClass(CLASS_NAME_DIRECT_CHAT_OPEN);
       $__default["default"](this._element).trigger($__default["default"].Event(EVENT_TOGGLED));
     } // Static
-    ;
+      ;
 
     DirectChat._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -884,7 +885,7 @@
         });
       }
     } // Static
-    ;
+      ;
 
     Dropdown._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -1019,7 +1020,7 @@
         $element.trigger($__default["default"].Event(EVENT_EXPANDED$1));
       }
     } // Static
-    ;
+      ;
 
     ExpandableTable._jQueryInterface = function _jQueryInterface(operation) {
       return this.each(function () {
@@ -1073,7 +1074,6 @@
    * Constants
    * ====================================================
    */
-
   var NAME$8 = 'Fullscreen';
   var DATA_KEY$8 = 'lte.fullscreen';
   var JQUERY_NO_CONFLICT$8 = $__default["default"].fn[NAME$8];
@@ -1084,6 +1084,7 @@
     minimizeIcon: 'fa-compress-arrows-alt',
     maximizeIcon: 'fa-expand-arrows-alt'
   };
+
   /**
    * Class Definition
    * ====================================================
@@ -1093,9 +1094,9 @@
     function Fullscreen(_element, _options) {
       this.element = _element;
       this.options = $__default["default"].extend({}, Default$8, _options);
-    } // Public
+    }
 
-
+    // Public
     var _proto = Fullscreen.prototype;
 
     _proto.toggle = function toggle() {
@@ -1132,9 +1133,9 @@
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
       }
-    } // Static
-    ;
+    };
 
+    // Static
     Fullscreen._jQueryInterface = function _jQueryInterface(config) {
       var data = $__default["default"](this).data(DATA_KEY$8);
 
@@ -1156,6 +1157,51 @@
 
     return Fullscreen;
   }();
+
+  // Create and style prompt overlay
+  function createFullscreenPrompt() {
+    var prompt = document.createElement('div');
+    prompt.style.position = 'fixed';
+    prompt.style.top = '50%';
+    prompt.style.left = '50%';
+    prompt.style.transform = 'translate(-50%, -50%)';
+    prompt.style.padding = '10px';
+    prompt.style.background = 'grey';
+    prompt.style.color = '#fff';
+    prompt.style.borderRadius = '8px';
+    prompt.style.textAlign = 'center';
+    prompt.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+    prompt.style.transition = 'opacity 0.3s ease';
+    prompt.style.opacity = '1';
+    document.body.appendChild(prompt);
+
+    // Add text to prompt
+    var heading = document.createElement('h2');
+    heading.innerText = 'Click Anywhere to Enter Fullscreen';
+    heading.style.margin = '0';
+    heading.style.fontSize = '1em';
+    prompt.appendChild(heading);
+
+    // Show prompt with fade-in effect
+    setTimeout(() => {
+      prompt.style.opacity = '1'; // Fade in
+    }, 10);
+
+    return prompt;
+  }
+
+  // Prompt user to enter fullscreen on click
+  document.addEventListener('DOMContentLoaded', function () {
+    var fullscreenInstance = new Fullscreen(document.body);
+    var prompt = createFullscreenPrompt();
+
+    // Add click event to enter fullscreen
+    document.addEventListener('click', function () {
+      fullscreenInstance.fullscreen();
+      prompt.style.display = 'none'; // Hide the prompt after clicking
+    }, { once: true }); // Ensure the event listener is removed after the first click
+  });
+
   /**
     * Data API
     * ====================================================
@@ -1450,7 +1496,7 @@
 
       this._fixHeight(true);
     } // Private
-    ;
+      ;
 
     _proto._init = function _init() {
       var usingDefTab = $__default["default"](SELECTOR_TAB_CONTENT).children().length > 2;
@@ -1628,7 +1674,7 @@
         }
       }
     } // Static
-    ;
+      ;
 
     IFrame._jQueryInterface = function _jQueryInterface(config) {
       if ($__default["default"](SELECTOR_DATA_TOGGLE$1).length > 0) {
@@ -1810,7 +1856,7 @@
         }
       }
     } // Private
-    ;
+      ;
 
     _proto._init = function _init() {
       var _this = this;
@@ -1874,7 +1920,7 @@
     _proto._isFooterFixed = function _isFooterFixed() {
       return $__default["default"](SELECTOR_FOOTER).css('position') === 'fixed';
     } // Static
-    ;
+      ;
 
     Layout._jQueryInterface = function _jQueryInterface(config) {
       if (config === void 0) {
@@ -2078,7 +2124,7 @@
         $body.removeClass(CLASS_NAME_COLLAPSED);
       }
     } // Private
-    ;
+      ;
 
     _proto._init = function _init() {
       var _this2 = this;
@@ -2101,7 +2147,7 @@
       });
       $__default["default"](SELECTOR_WRAPPER).append(overlay);
     } // Static
-    ;
+      ;
 
     PushMenu._jQueryInterface = function _jQueryInterface(operation) {
       return this.each(function () {
@@ -2283,7 +2329,7 @@
         this.open();
       }
     } // Private
-    ;
+      ;
 
     _proto._parseItem = function _parseItem(item, path) {
       var _this3 = this;
@@ -2360,7 +2406,7 @@
     _proto._addNotFound = function _addNotFound() {
       $__default["default"](SELECTOR_SEARCH_RESULTS_GROUP).append(this._renderItem(this.options.notFoundText, '#', []));
     } // Static
-    ;
+      ;
 
     SidebarSearch._jQueryInterface = function _jQueryInterface(config) {
       var data = $__default["default"](this).data(DATA_KEY$4);
@@ -2506,7 +2552,7 @@
         this.open();
       }
     } // Static
-    ;
+      ;
 
     NavbarSearch._jQueryInterface = function _jQueryInterface(options) {
       return this.each(function () {
@@ -2687,7 +2733,7 @@
         });
       }
     } // Static
-    ;
+      ;
 
     _proto._getContainerId = function _getContainerId() {
       if (this._config.position == POSITION_TOP_RIGHT) {
@@ -2730,7 +2776,7 @@
         $__default["default"](this._getContainerId()).removeClass('fixed');
       }
     } // Static
-    ;
+      ;
 
     Toasts._jQueryInterface = function _jQueryInterface(option, config) {
       return this.each(function () {
@@ -2818,7 +2864,7 @@
     _proto.unCheck = function unCheck(item) {
       this._config.onUnCheck.call(item);
     } // Private
-    ;
+      ;
 
     _proto._init = function _init() {
       var _this = this;
@@ -2829,7 +2875,7 @@
         _this.toggle($__default["default"](event.target));
       });
     } // Static
-    ;
+      ;
 
     TodoList._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -2986,7 +3032,7 @@
         this.expand($__default["default"](treeviewMenu), parentLi);
       }
     } // Private
-    ;
+      ;
 
     _proto._setupListeners = function _setupListeners() {
       var _this3 = this;
@@ -3002,7 +3048,7 @@
         $__default["default"](this._config.sidebarButtonSelector).PushMenu('expand');
       }
     } // Static
-    ;
+      ;
 
     Treeview._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
