@@ -13,5 +13,5 @@ This project aims to create a user-friendly website that provides resources and 
 - **HTML/CSS:** For structuring and styling the website.
 - **JavaScript:** To enhance interactivity and user experience.
 - **Backend:** ...
-- **Database:**...s.
+- **Database:**...
 
