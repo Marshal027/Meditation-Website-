@@ -33,28 +33,69 @@
       });
     }
   </script>
-  <!-- this is for pop up (-Marshal)-->
+
+
+  <!-- this is for pop up to add homescreen (-Marshal)-->
   <script>
-    let deferredPrompt;
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log("Script Loaded");
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      // Optionally show a custom install button or prompt here
-    });
+      let deferredPrompt;
 
-    // Trigger installation (after user action)
-    document.querySelector('#your-install-button').addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
-          } else {
-            console.log('User dismissed the A2HS prompt');
-          }
-          deferredPrompt = null;
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          }).catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
         });
+      }
+
+      // Listen for the beforeinstallprompt event
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        console.log('beforeinstallprompt fired');
+
+        // Check if the app is already installed
+        if (!window.matchMedia('(display-mode: standalone)').matches) {
+          showInstallButton();
+        }
+      });
+
+      // Function to show the install button
+      function showInstallButton() {
+        const button = document.createElement('button');
+        button.textContent = 'Add to Home Screen';
+        button.style.position = 'fixed';
+        button.style.bottom = '20px';
+        button.style.right = '20px';
+        button.style.zIndex = '1000';
+        document.body.appendChild(button);
+
+        button.addEventListener('click', () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+              } else {
+                console.log('User dismissed the A2HS prompt');
+              }
+              deferredPrompt = null;
+              button.remove();
+            });
+          }
+        });
+      }
+
+      // Check if the app is already installed on page load
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        console.log('App is already installed.');
+      } else {
+        console.log('App is not installed yet.');
       }
     });
 

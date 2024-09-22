@@ -11,6 +11,7 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
+    console.log('Service Worker installing.');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
@@ -26,4 +27,8 @@ self.addEventListener('fetch', (event) => {
                 return response || fetch(event.request);
             })
     );
+});
+
+self.addEventListener('activate', (event) => {
+    console.log('Service Worker activated.');
 });
