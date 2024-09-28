@@ -2,11 +2,14 @@
 const CACHE_NAME = 'your-cache-name';
 const urlsToCache = [
     '/',
-    '/index2.html',
-    '/dist/css',
-    '/dist/css/adminlte.css',
-    '/dist/js',
-    '"/CTI/logo 192x192.png"',
+    'index2.html',
+    'dist/css',
+    'dist/css/adminlte.css',
+    'plugins/fontawesome-free/css/all.min.css',
+    'plugins/overlayScrollbars/css/OverlayScrollbars.min.css',
+    'dist/css/adminlte.min.css',
+    'dist/js',
+    'CTI/logo 192x192.png',
 
 ];
 
