@@ -19,6 +19,7 @@
 .appletree {
   height: 340px;
   margin-top: 60px;
+  margin-bottom: 50px;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
