@@ -1,5 +1,7 @@
 const container = document.getElementById('apple');
 const text = document.getElementById('tax');
+var intofire = document.getElementById("intofire")
+var rootElement = document.documentElement
 
 const totalTime = 7500;
 const breatheTime = (totalTime / 5) * 2;
@@ -22,3 +24,13 @@ function breathAnimation() {
 }
 
 setInterval(breathAnimation, totalTime);
+
+function IntoFire() {
+  // Scroll to top logic
+  rootElement.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
+
+intofire.addEventListener("click", IntoFire)
