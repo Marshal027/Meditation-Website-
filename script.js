@@ -32,5 +32,3 @@ function IntoFire() {
     behavior: "smooth"
   })
 }
-
-intofire.addEventListener("click", IntoFire)
