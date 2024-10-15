@@ -32,3 +32,11 @@ function IntoFire() {
     behavior: "smooth"
   })
 }
+
+function IntoApple() {
+  // Scroll to top logic
+  rootElement.scrollTo({
+    top: 930,
+    behavior: "smooth"
+  })
+}
