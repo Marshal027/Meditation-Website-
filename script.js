@@ -33,10 +33,4 @@ function IntoFire() {
   })
 }
 
-function IntoApple() {
-  // Scroll to top logic
-  rootElement.scrollTo({
-    top: 930,
-    behavior: "smooth"
-  })
-}
+intofire.addEventListener("click", IntoFire)
