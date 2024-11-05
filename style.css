@@ -65,8 +65,9 @@
   top: 0;
   left: 0;
   z-index: -1;
+  animation: breathe 16s linear forwards infinite;
 }
-.circle1 {
+/* .circle1 {
   background-color: #010f1c;
   height: 100%;
   width: 100%;
@@ -85,7 +86,7 @@
   top: 0;
   left: 0;
   z-index: -1;
-}
+} */
 
 .gradient-circle {
   background: conic-gradient(#55b7a4 0%,
@@ -103,8 +104,9 @@
   position: absolute;
   top: -10px;
   left: -10px;
+  animation: breathe 16s linear forwards infinite;
 }
-.gradient-circle1 {
+/* .gradient-circle1 {
   background: conic-gradient(#55b7a4 0%,
       #4ca493 40%,
       #fff 40%,
@@ -133,7 +135,7 @@
   position: absolute;
   top: -10px;
   left: -10px;
-}
+} */
 
 .pointer {
   background-color: #fff;
@@ -142,7 +144,7 @@
   width: 20px;
   display: block;
 }
-.pointer1 {
+/* .pointer1 {
   background-color: #fff;
   border-radius: 50%;
   height: 20px;
@@ -155,14 +157,14 @@
   height: 20px;
   width: 20px;
   display: block;
-}
+} */
 
 .pointer-container {
   position: absolute;
   top: -40px;
-  left: 140px;
-  width: 20px;
-  height: 190px;
+  left: 118px;
+  width: 92px;
+  height: 198px;
   animation: rotate 16s linear forwards infinite;
   transform-origin: bottom center;
 }
@@ -206,7 +208,7 @@
   }
 }
 
-.apple.grow {
+/* .apple.grow {
   animation: grow 4s linear forwards;
 }
 
@@ -231,9 +233,33 @@
 
   to {
     transform: scale(1);
-  }
+  } 
+}*/
+
+@keyframes breathe {
+0% {
+  transform: scale(1);
 }
-.apple1.grow1 {
+
+25% {
+  transform: scale(1.2);
+}
+
+37% {
+  transform: scale(1.2);
+}
+
+87% {
+  transform: scale(1);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+/* .apple1.grow1 {
   animation: grow1 4s linear forwards;
 }
 
@@ -259,8 +285,8 @@
   to {
     transform: scale(1);
   }
-}
-.apple2.grow2 {
+} */
+/* .apple2.grow2 {
   animation: grow2 3s linear forwards;
 }
 
@@ -296,4 +322,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
