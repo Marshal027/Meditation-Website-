@@ -1,107 +1,53 @@
 const container = document.getElementById('apple');
 // const container1 = document.getElementById('apple1');
 // const container2 = document.getElementById('apple2');
-const text = document.getElementById('tax');
+// const text = document.getElementById('tax');
 // const text1 = document.getElementById('tax1');
 // const text2 = document.getElementById('tax2');
 var intofire = document.getElementById("intofire")
 var rootElement = document.documentElement
 
-const totalTime = 16500;
-const breatheTime = (totalTime / 8) * 2;
-const holdTime = totalTime / 8;
-const outTime = totalTime / 2;
 
-// const totalTime1 = 16000;
-// const breatheTime1 = (totalTime / 5) * 2;
-// const holdTime1 = totalTime / 5;
 
-// const totalTime2 = 7500;
-// const breatheTime2 = (totalTime / 5) * 2;
-// const holdTime2 = totalTime / 5;
-
-// function breath4282Animation() {
-//   text.innerText = 'Breathe In!';
-//   container.className = 'apple grow';
-
-//   setTimeout(() => {
-//     text.innerText = 'Hold';
-
-//     setTimeout(() => {
-//       text.innerText = 'Breathe Out!';
-//       container.className = 'apple shrink';
-
-//       setTimeout(() => {
-//         text.innerText = 'Hold';
-
-//     }, outTime)
-//    }, holdTime);
-//   }, breatheTime);
-// }
-
-// setInterval(breath4282Animation, totalTime);
-
+// Array of breathing stages with corresponding text and duration (in milliseconds)
 const stages = [
-  { text: "Breathe In", duration: 4000 },
-  { text: "Hold", duration: 2000 },
-  { text: "Breathe Out", duration: 8000 },
-  { text: "Hold", duration: 2000 },
+  { text: "Breathe In", duration: 4000 },  // 4 seconds inhale
+  { text: "Hold", duration: 2000 },        // 2 seconds hold
+  { text: "Breathe Out", duration: 8000 }, // 8 seconds exhale
+  { text: "Hold", duration: 2000 }         // 2 seconds hold
 ];
+
+const breathText = document.getElementById("breath-text");
+const startButton = document.getElementById("start-button");
+
 let currentStage = 0;
 let interval;
 
-
-function startBreathingAnimation() {
-  // Reset the stage index and animation state
-  currentStage = 0;
-
-  breath4282Animation();
-}
-
-function breath4282Animation() {
-
-  text.textContent = stages[currentStage].text;
+function updateBreathingText() {
+  breathText.textContent = stages[currentStage].text;
   interval = setTimeout(() => {
-    currentStage = (currentStage + 1) % stages.length;
-    breath4282Animation();
+    currentStage = (currentStage + 1) % stages.length; // Loop through stages
+    updateBreathingText();
   }, stages[currentStage].duration);
 }
 
-// breathAnimation1();
+function startBreathingAnimation() {
+  // Clear any previous animation interval
+  clearTimeout(interval);
+  currentStage = 0; // Reset stage
+  breathText.textContent = stages[currentStage].text; // Reset to initial text
 
-// function breathAnimation1() {
-//   text1.innerText = 'Breathe In!';
-//   container1.className = 'apple1 grow';
+  // // Reset the animation by forcing a reflow
+  // breathingCircle.style.animation = 'none';
+  // void breathingCircle.offsetWidth; // Trigger reflow
+  // breathingCircle.style.animation = ''; // Re-apply animation
 
-//   setTimeout(() => {
-//     text1.innerText = 'Hold';
+  // breathingCircle.style.animationPlayState = "running"; // Start the breathing animation
+  updateBreathingText(); // Start text updates
+}
 
-//     setTimeout(() => {
-//       text1.innerText = 'Breathe Out!';
-//       container1.className = 'apple1 shrink';
-//     }, holdTime1);
-//   }, breatheTime1);
-// }
-
-// setInterval(breathAnimation1, totalTime1);
-
-// breathAnimation2();
-
-// function breathAnimation2() {
-//   text2.innerText = 'Breathe In!';
-//   container2.className = 'apple2 grow';
-
-//   setTimeout(() => {
-//     text2.innerText = 'Hold';
-
-//     setTimeout(() => {
-//       text2.innerText = 'Breathe Out!';
-//       container2.className = 'apple2 shrink';
-//     }, holdTime2);
-//   }, breatheTime2);
-// }
-
-// setInterval(breathAnimation2, totalTime2);
+// Add event listener to start button to restart animation every time
+startButton.addEventListener("click", startBreathingAnimation);
 
 
 function IntoFire() {
