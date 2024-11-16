@@ -33,7 +33,7 @@ const outTime = totalTime / 2;
 
 //       setTimeout(() => {
 //         text.innerText = 'Hold';
-        
+
 //     }, outTime)
 //    }, holdTime);
 //   }, breatheTime);
@@ -42,24 +42,30 @@ const outTime = totalTime / 2;
 // setInterval(breath4282Animation, totalTime);
 
 const stages = [
-  {text: "Breathe In",duration: 4000},
-  {text: "Hold",duration: 2000},
-  {text: "Breathe Out",duration: 8000},
-  {text: "Hold",duration: 2000},
+  { text: "Breathe In", duration: 4000 },
+  { text: "Hold", duration: 2000 },
+  { text: "Breathe Out", duration: 8000 },
+  { text: "Hold", duration: 2000 },
 ];
-let currentStage=0;
+let currentStage = 0;
+let interval;
+
+
+function startBreathingAnimation() {
+  // Reset the stage index and animation state
+  currentStage = 0;
+
+  breath4282Animation();
+}
 
 function breath4282Animation() {
+
   text.textContent = stages[currentStage].text;
-  setTimeout(() => {
-    currentStage = (currentStage + 1)%stages.length;
+  interval = setTimeout(() => {
+    currentStage = (currentStage + 1) % stages.length;
     breath4282Animation();
-}, stages[currentStage].duration);
-
-  }
-
-
-
+  }, stages[currentStage].duration);
+}
 
 // breathAnimation1();
 
