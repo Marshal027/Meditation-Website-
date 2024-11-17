@@ -134,3 +134,10 @@ function IntoApple() {
     behavior: "smooth"
   })
 }
+function IntoMango() {
+  // Scroll to top logic
+  rootElement.scrollTo({
+    top: 950,
+    behavior: "smooth"
+  })
+}

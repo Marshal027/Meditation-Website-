@@ -21,8 +21,8 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 50%;
-  width: 50%;
+  height: 30%;
+  width: 30%;
 }
 
 .breath-text {
@@ -59,9 +59,9 @@
 }
 
 .appletree {
-  height: 100%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  height: 80%;
+  margin-top: 2%;
+  margin-bottom: 3%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
@@ -72,11 +72,11 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 300px;
-  width: 300px;
+  height: fit-content;
+  width: fit-content;
 
   position: relative;
-  transform: scale(1);
+  transform: scale(0.8);
 }
 
 .apple1 {
@@ -84,11 +84,10 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 300px;
-  width: 300px;
-
+  height: min-content;
+  width: min-content;
   position: relative;
-  transform: scale(1);
+  transform: scale(0.8);
 }
 
 .apple2 {
@@ -96,10 +95,10 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 300px;
-  width: 300px;
+  height: min-content;
+  width: min-content;
   position: relative;
-  transform: scale(1);
+  transform: scale(0.8);
 }
 
 .circle {
