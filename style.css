@@ -16,6 +16,15 @@
   margin: 0;
 } */
 
+.yogimage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 50%;
+  width: 50%;
+}
+
 .breath-text {
   display: flex;
   align-items: center;
