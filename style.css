@@ -50,9 +50,9 @@
 }
 
 .appletree {
-  height: 340px;
-  margin-top: 60px;
-  margin-bottom: 50px;
+  height: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
@@ -65,6 +65,7 @@
   margin: auto;
   height: 300px;
   width: 300px;
+
   position: relative;
   transform: scale(1);
 }
@@ -76,6 +77,7 @@
   margin: auto;
   height: 300px;
   width: 300px;
+
   position: relative;
   transform: scale(1);
 }
@@ -92,42 +94,47 @@
 }
 
 .circle {
+  display: flex;
   background-color: #010f1c;
-  height: 100%;
-  width: 100%;
+  height: 94%;
+  width: 94%;
   border-radius: 50%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 4.2%;
+  left: 4%;
   z-index: -1;
+  object-fit: scale-down;
   animation: breathe 16s linear forwards infinite;
 }
 
 .circle1 {
+  display: flex;
   background-color: #010f1c;
-  height: 100%;
-  width: 100%;
+  height: 94%;
+  width: 94%;
   border-radius: 50%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 4.2%;
+  left: 4%;
   z-index: -1;
   animation: breathe1 16s linear forwards infinite;
 }
 
 .circle2 {
+  display: flex;
   background-color: #010f1c;
-  height: 100%;
-  width: 100%;
+  height: 94%;
+  width: 94%;
   border-radius: 50%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 4.2%;
+  left: 4%;
   z-index: -1;
   animation: breathe2 19s linear forwards infinite;
 }
 
 .gradient-circle {
+  display: flex;
   background: conic-gradient(#55b7a4 0%,
       #4ca493 25%,
       #fff 25%,
@@ -136,17 +143,19 @@
       #336d62 87%,
       #fff 87%,
       #fff 100%);
-  height: 320px;
-  width: 320px;
+  height: 100%;
+  width: 100%;
   z-index: -2;
-  border-radius: 50%;
+  border-radius: 100%;
   position: absolute;
-  top: -10px;
-  left: -10px;
+  object-fit: scale-down;
+  top: 1%;
+  left: 1%;
   animation: breathe 16s linear forwards infinite;
 }
 
 .gradient-circle1 {
+  display: flex;
   background: conic-gradient(#6fd9c4 0%,
       #6fd9c4 25%,
       #2a5b52 25%,
@@ -155,68 +164,76 @@
       #6fd9c4 75%,
       #2a5b52 75%,
       #2a5b52 100%);
-  height: 320px;
-  width: 320px;
+  height: 100%;
+  width: 100%;
   z-index: -2;
-  border-radius: 50%;
+  border-radius: 100%;
   position: absolute;
-  top: -10px;
-  left: -10px;
+  top: 1%;
+  left: 1%;
   animation: breathe1 16s linear forwards infinite;
 }
 
 .gradient-circle2 {
+  display: flex;
   background: conic-gradient(#55b7a4 0%,
       #4ca493 21%,
       #fff 21%,
       #fff 57.84%,
       #336d62 57.84%,
       #2a5b52 100%);
-  height: 320px;
-  width: 320px;
+  height: 100%;
+  width: 100%;
   z-index: -2;
-  border-radius: 50%;
+  border-radius: 100%;
   position: absolute;
-  top: -10px;
-  left: -10px;
+  top: 1%;
+  left: 1%;
   animation: breathe2 19s linear forwards infinite;
 }
 
 .pointer {
+  display: flex;
   background-color: #fff;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: 10%;
+  width: 22%;
   display: block;
+  object-fit: scale-down;
 }
 
 .pointer1 {
+  display: flex;
   background-color: #fff;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: 13%;
+  width: 6.5%;
   display: block;
 }
 
 .pointer2 {
+  display: flex;
   background-color: #fff;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: 10%;
+  width: 14.5%;
   display: block;
 }
 
 .pointer-container {
+  display: flex;
   position: absolute;
   top: -40px;
   left: 118px;
   width: 92px;
   height: 198px;
+  object-fit: scale-down;
   animation: rotate 16s linear forwards infinite;
   transform-origin: bottom center;
 }
 
 .pointer-container1 {
+  display: flex;
   position: absolute;
   top: -4px;
   left: -3px;
@@ -227,6 +244,8 @@
 }
 
 .pointer-container2 {
+
+  display: flex;
   position: absolute;
   top: -40px;
   left: 91px;
