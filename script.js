@@ -141,3 +141,106 @@ function IntoMango() {
     behavior: "smooth"
   })
 }
+
+window.onload = function () {
+  // Load the saved note from local storage (if available)
+  const savedNote = localStorage.getItem('note');
+  if (savedNote) {
+    document.getElementById('note').value = savedNote;
+  }
+};
+
+// Function to save the note to local storage
+function saveNote() {
+  const noteContent = document.getElementById('note').value;
+  localStorage.setItem('note', noteContent);
+  // alert('Note saved!');
+}
+
+// Function to clear the note and local storage
+function clearNote() {
+  if (confirm('Are you sure you want to clear the note?')) {
+    document.getElementById('note').value = '';
+    localStorage.removeItem('note');
+  }
+}
+
+
+
+// // Load tasks from localStorage when the page loads
+// window.onload = function () {
+//   loadTasks();
+// };
+
+// // Add a new task to the list
+// function addTask() {
+//   const taskInput = document.getElementById('taskInput');
+//   const taskText = taskInput.value.trim();
+//   if (taskText === '') {
+//     alert('Please enter a task!');
+//     return;
+//   }
+
+//   // Add the task to the list
+//   const tasks = getTasks();
+//   tasks.push({ text: taskText, completed: false });
+//   saveTasks(tasks);
+
+//   // Refresh the task list display
+//   renderTasks();
+
+//   // Clear the input field
+//   taskInput.value = '';
+// }
+
+// // Toggle task completion
+// function toggleTask(index) {
+//   const tasks = getTasks();
+//   tasks[index].completed = !tasks[index].completed;
+//   saveTasks(tasks);
+//   renderTasks();
+// }
+
+// // Delete a task
+// function deleteTask(index) {
+//   const tasks = getTasks();
+//   tasks.splice(index, 1);
+//   saveTasks(tasks);
+//   renderTasks();
+// }
+
+// // Save tasks to localStorage
+// function saveTasks(tasks) {
+//   localStorage.setItem('tasks', JSON.stringify(tasks));
+// }
+
+// // Get tasks from localStorage
+// function getTasks() {
+//   const tasks = localStorage.getItem('tasks');
+//   return tasks ? JSON.parse(tasks) : [];
+// }
+
+// // Render tasks in the UI
+// function renderTasks() {
+//   const taskList = document.getElementById('taskList');
+//   const tasks = getTasks();
+
+//   // Clear the current list
+//   taskList.innerHTML = '';
+
+//   // Add tasks to the list
+//   tasks.forEach((task, index) => {
+//     const lit = document.createElement('lit');
+//     lit.className = task.completed ? 'completed' : '';
+//     lit.innerHTML = `
+//   <span onclick="toggleTask(${index})">${task.text}</span>
+//   <button onclick="deleteTask(${index})">Delete</button>
+// `;
+//     taskList.appendChild(li);
+//   });
+// }
+
+// // Load tasks from localStorage and render them
+// function loadTasks() {
+//   renderTasks();
+// }
